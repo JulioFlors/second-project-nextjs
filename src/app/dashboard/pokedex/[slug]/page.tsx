@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
-import { capitalizeName, formatPokemonId, getPokemon, SetPokedexUrl, pokedexPagination } from '@/pokemon';
+import { capitalizeName, formatPokemonId, getPokemon, SetPokedexUrl, pokedexPagination, PokemonResponse } from '@/pokemon';
 
 
 interface Props {
@@ -11,6 +11,25 @@ interface Props {
 }
 
 const LIMIT_POKEMON = 1025;
+const LIMIT_STATIC = 151;
+
+export async function generateStaticParams() {
+
+  const STATIC_ID = Array.from({ length: LIMIT_STATIC }).map((_, i) => `${i + 1}`);
+
+  const data: PokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT_STATIC}`)
+    .then(res => res.json());
+
+  const STATIC_NAME = data.results.map(pokemon => (pokemon.name));
+
+  const STATIC_POKEMON = [...STATIC_ID, ...STATIC_NAME]
+
+  console.log(STATIC_POKEMON);
+
+  return STATIC_POKEMON.map(slug => ({
+    slug: slug
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {

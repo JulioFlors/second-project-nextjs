@@ -10,10 +10,10 @@ export const capitalizeName = (name: string): String => {
 
 export const fetchPokemonById = async (id: string): Promise<Pokedex> => {
   const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-    cache: 'force-cache' //TODO: investigar sobre las otras opciones disponibles para peristir el CACHE
-    /*     next: {
-          revalidate: 60 * 60 * 30 * 6
-        } */
+    /* cache: 'force-cache', */
+    next: {
+      revalidate: 60 * 60 * 30 * 6
+    }
   }).then(resp => resp.json())
 
   console.log(`The ${pokemon.name} data is loaded`);
@@ -22,10 +22,10 @@ export const fetchPokemonById = async (id: string): Promise<Pokedex> => {
 
 export const fetchPokemonByName = async (name: string): Promise<Pokedex> => {
   const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
-    cache: 'force-cache'
-    /*     next: {
-          revalidate: 60 * 60 * 30 * 6
-        } */
+    /* cache: 'force-cache', */
+    next: {
+      revalidate: 60 * 60 * 30 * 6
+    }
   }).then(resp => resp.json())
 
   console.log(`The ${pokemon.name} data is loaded`);
@@ -47,8 +47,8 @@ export const pokedexPagination = async (id: number, limit: number): Promise<Pagi
     const prevId = id === 1 ? limit : id - 1;
     const nextId = id === limit ? 1 : id + 1;
 
-    const prevPokemon = await fetchPokemonById(prevId);
-    const nextPokemon = await fetchPokemonById(nextId);
+    const prevPokemon = await fetchPokemonById(prevId.toString());
+    const nextPokemon = await fetchPokemonById(nextId.toString());
 
     return { prevPokemon, nextPokemon };
   } catch (error) {
