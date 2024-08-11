@@ -2,27 +2,33 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { TbPokeball } from 'react-icons/tb';
 import { SidebarMenuItem } from './SidebarMenuItem';
-import { IoBrowsersOutline, IoCalculator } from 'react-icons/io5';
+import { IoBrowsersOutline, IoCalculator, IoHeartOutline } from 'react-icons/io5';
 import { ImLeaf } from "react-icons/im";
 
 const menuItems = [
   {
-    path: '/dashboard/main',
+    path: '/dashboard',
     icon: <IoBrowsersOutline size={40} />,
     title: 'Dashboard',
     subTitle: 'Visualización',
   },
   {
-    path: '/dashboard/counter',
+    path: '/counter',
     icon: <IoCalculator size={40} />,
     title: 'Counter',
     subTitle: 'Contador Client Side',
   },
   {
-    path: '/dashboard/pokedex',
+    path: '/pokedex',
     icon: <TbPokeball size={40} />,
     title: 'Pokédex',
     subTitle: 'Generacion estatica',
+  },
+  {
+    path: '/favorites',
+    icon: <IoHeartOutline size={40} />,
+    title: 'Favorites',
+    subTitle: 'Global State',
   }
 ]
 

@@ -62,7 +62,7 @@ export default async function PokemonPage({ params }: Props) {
             <div className="mt-2 mb-8 w-full">
 
               <div className="flex w-full justify-between font-flexo font-semibold ">
-                <Link href={`/dashboard/pokedex/${prevPokemon.name}`}>
+                <Link href={`/pokedex/${prevPokemon.name}`}>
                   <div className="flex items-center">
                     <GrFormPrevious className='mr-2' />
                     <span className="text-gray-500 mr-2">{formatPokemonId(prevPokemon.id.toString())}</span>
@@ -70,7 +70,7 @@ export default async function PokemonPage({ params }: Props) {
                   </div>
                 </Link>
 
-                <Link href={`/dashboard/pokedex/${nextPokemon.name}`}>
+                <Link href={`/pokedex/${nextPokemon.name}`}>
                   <div className="flex items-center">
                     <span >{capitalizeName(nextPokemon.name)}</span>
                     <span className="text-gray-500 ml-2">{formatPokemonId(nextPokemon.id.toString())}</span>

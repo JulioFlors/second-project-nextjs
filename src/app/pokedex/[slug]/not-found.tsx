@@ -10,7 +10,7 @@ export default function NotFound() {
           <h1 className="mt-4 text-3xl font-flexo font-semibold tracking-tight text-gray-200 sm:text-5xl">Pokémon No Encontrado</h1>
           <p className="mt-6 text-base font-semibold leading-7 text-gray-200">Parece que te has perdido en la niebla.</p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link href="/dashboard/pokedex" className="rounded-md bg-[#733CA9] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible: outline-purple-600 z-[3]">Ir al Pokédex</Link>
+            <Link href="/pokedex" className="rounded-md bg-[#733CA9] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible: outline-purple-600 z-[3]">Ir al Pokédex</Link>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
   const { id, name } = pokemon
 
   return (
-    <Link href={`/dashboard/pokedex/${name}`}>
+    <Link href={`/pokedex/${name}`}>
       <article className='flex flex-col hover:scale-105 transition duration-500 cursor-pointer'>
 
         <header className="flex items-center justify-center bg-gray-100 rounded-md p-2">
