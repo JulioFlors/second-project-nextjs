@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { TbPokeball } from 'react-icons/tb';
 import { SidebarMenuItem } from './SidebarMenuItem';
 import { IoBrowsersOutline, IoCalculator, IoHeartOutline } from 'react-icons/io5';
-import { ImLeaf } from "react-icons/im";
+/* import { ImLeaf } from "react-icons/im"; */
 
 const menuItems = [
   {
@@ -39,15 +39,14 @@ export const Sidebar = () => {
       className="bg-gray-900 min-h-screen z-10 text-slate-300 left-0 overflow-auto w-80">
 
       <div id="logo" className="my-4 px-6">
-        <h1 className="flex items-center text-lg md:text-2xl font-bold text-green-500 ">
-          <span>Vivero</span>
+        <h1 className="font-flexo font-bold flex items-center text-lg md:text-2xl text-green-500  ">
+          <span>Pokedéx</span>
           <span className="text-white">Online</span>
-          <ImLeaf className='ml-1' />
+          {/*  <TbPokeball className='ml-1' /> */}
         </h1>
-        <p className="text-slate-500 text-sm">Toda nuestra experiencia a tu alzance</p>
+        <p className="font-flexo font-medium text-slate-300 text-sm">Explora la primera Generacion</p>
       </div>
       <div id="profile" className="px-6 py-10">
-        <p className="text-slate-500">Bienvenida,</p>
         <Link href="#" className="inline-flex space-x-2 items-center">
           <span>
             <Image
@@ -58,7 +57,7 @@ export const Sidebar = () => {
               height={50}
             />
           </span>
-          <span className="text-sm md:text-base font-bold">
+          <span className="font-flexo font-bold text-sm md:text-base">
             Kurohana
           </span>
         </Link>

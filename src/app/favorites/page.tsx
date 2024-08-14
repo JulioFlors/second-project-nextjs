@@ -1,4 +1,4 @@
-import { PokemonGrid } from "@/pokemon";
+import { FavoritePokemonGrid } from "@/pokemon";
 import { Metadata } from 'next';
 
 
@@ -16,8 +16,7 @@ export default async function FavoritesPage() {
         <span className="font-semibold">Pokémon Favorites</span>
       </div>
 
-      <PokemonGrid pokemonList={[]} />
-
+      <FavoritePokemonGrid />
     </div>
   );
 }

@@ -1,6 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { formatPokemonId, SimplePokemon } from '@/pokemon';
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
+import { usePokemonStore } from '@/stores';
 
 interface Props {
   pokemon: SimplePokemon;
@@ -8,12 +12,14 @@ interface Props {
 
 export const PokemonCard = ({ pokemon }: Props) => {
   const { id, name } = pokemon
+  const isFavorite = usePokemonStore(state => (!!state.favorites[id]));
+  const onToggle = usePokemonStore(state => state.toggleFavorite)
 
   return (
-    <Link href={`/pokedex/${name}`}>
-      <article className='flex flex-col hover:scale-105 transition duration-500 cursor-pointer'>
 
-        <header className="flex items-center justify-center bg-gray-100 rounded-md p-2">
+    <article className='flex flex-col hover:scale-105 transition duration-500'>
+      <Link href={`/pokedex/${name}`}>
+        <header className="flex items-center justify-center bg-gray-100 rounded-md p-2 cursor-pointer">
           <Image
             alt={`official-artwork ${name}`}
             height={350}
@@ -23,19 +29,36 @@ export const PokemonCard = ({ pokemon }: Props) => {
             width={350}
           />
         </header>
+      </Link>
 
-        <div className="px-3 text-left select-none">
-          <span
-            className="flex-initial my-1 py-2 font-flexo font-semibold text-gray-400 sm:text-xs md:text-xs lg:text-xs xl:text-xs">
-            {formatPokemonId(id)}
-          </span>
+      <div className="px-3 text-left select-none">
 
-          <h2 className="flex-initial py-2 font-flexo font-medium text-gray-800 text-lg capitalize">
+        <div className='flex items-center justify-between'>
+          <Link href={`/pokedex/${name}`}>
+            <span
+              className="flex-initial py-2 font-flexo font-semibold text-gray-400 sm:text-xs md:text-xs lg:text-xs xl:text-xs cursor-pointer">
+              {formatPokemonId(id)}
+            </span>
+          </Link>
+          <div
+            onClick={() => onToggle(pokemon)}
+            className="text-rose-800 z-50 hover:scale-150 transition duration-500 cursor-pointer">
+            {
+              isFavorite
+                ? (<IoHeart size={15} />)
+                : (<IoHeartOutline size={15} />)
+            }
+          </div>
+        </div>
+        <Link href={`/pokedex/${name}`}>
+          <h2 className="flex-initial font-flexo font-medium text-gray-800 text-lg capitalize cursor-pointer">
             {name}
           </h2>
-        </div>
+        </Link>
+      </div>
 
-      </article>
-    </Link>
+    </article >
+
+
   )
 }

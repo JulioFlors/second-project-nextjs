@@ -2,7 +2,7 @@
 
 import { IoCartOutline } from "react-icons/io5"
 import { SimpleWidget } from "./SimpleWidget"
-import { useCounterStore } from '@/store';
+import { useCounterStore } from '@/stores';
 
 
 export const WidgetsGrid = () => {
